@@ -43,14 +43,14 @@ const InternshipDetails = () => {
     try {
       const res = await axios.get(`/internships/${id}`);
       setInternship(res.data);
-      
+
       // Check if student has already applied
       if (user?.role === 'student') {
         const myApps = await axios.get('/applications/my-applications');
         const applied = myApps.data.some(app => app.internship?._id === id);
         setHasApplied(applied);
       }
-      
+
       setLoading(false);
     } catch (err) {
       toast.error('Failed to load internship details');
@@ -139,7 +139,7 @@ const InternshipDetails = () => {
             <div className="flex-1 mb-4 md:mb-0">
               <div className="flex items-start space-x-4">
                 <div className="bg-gradient-to-br from-primary-600 to-secondary-600 p-4 rounded-2xl">
-                  <BriefcaseIcon className="h-8 w-8 text-white" />
+                  <BriefcaseIcon className="h-8 w-8 text-gray-800" />
                 </div>
                 <div>
                   <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
@@ -152,20 +152,18 @@ const InternshipDetails = () => {
                     </span>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      internship.type === 'remote' 
-                        ? 'bg-green-100 text-green-800' 
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${internship.type === 'remote'
+                        ? 'bg-green-100 text-green-800'
                         : internship.type === 'onsite'
-                        ? 'bg-blue-100 text-blue-800'
-                        : 'bg-purple-100 text-purple-800'
-                    }`}>
+                          ? 'bg-blue-100 text-blue-800'
+                          : 'bg-purple-100 text-purple-800'
+                      }`}>
                       {internship.type}
                     </span>
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      internship.status === 'active' 
-                        ? 'bg-green-100 text-green-800' 
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${internship.status === 'active'
+                        ? 'bg-green-100 text-green-800'
                         : 'bg-gray-100 text-gray-800'
-                    }`}>
+                      }`}>
                       {internship.status}
                     </span>
                   </div>
@@ -179,7 +177,7 @@ const InternshipDetails = () => {
                 <button
                   onClick={handleApply}
                   disabled={applying || hasApplied || internship.status !== 'active'}
-                  className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl font-bold text-lg hover:shadow-xl transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                  className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-gray-800 rounded-xl font-bold text-lg hover:shadow-xl transition-all transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 >
                   {applying ? (
                     <span className="flex items-center space-x-2">
@@ -204,7 +202,7 @@ const InternshipDetails = () => {
             {isCompanyOwner && (
               <button
                 onClick={() => setShowApplicants(!showApplicants)}
-                className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl font-bold text-lg hover:shadow-xl transition-all transform hover:scale-105"
+                className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-gray-800 rounded-xl font-bold text-lg hover:shadow-xl transition-all transform hover:scale-105"
               >
                 {showApplicants ? 'Hide' : 'View'} Applicants ({applications.length})
               </button>
@@ -230,7 +228,7 @@ const InternshipDetails = () => {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Required Skills</h2>
               <div className="flex flex-wrap gap-3">
                 {internship.skills?.map((skill, index) => (
-                  <span 
+                  <span
                     key={index}
                     className="px-4 py-2 bg-primary-50 text-primary-700 rounded-lg font-medium"
                   >
@@ -244,7 +242,7 @@ const InternshipDetails = () => {
             {internship.company && (
               <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">About the Company</h2>
-                
+
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <BuildingOfficeIcon className="h-6 w-6 text-gray-400" />
@@ -261,7 +259,7 @@ const InternshipDetails = () => {
                       <GlobeAltIcon className="h-6 w-6 text-gray-400" />
                       <div>
                         <p className="text-sm text-gray-500">Website</p>
-                        <a 
+                        <a
                           href={internship.company.companyWebsite}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -315,14 +313,14 @@ const InternshipDetails = () => {
                 ) : (
                   <div className="space-y-4">
                     {applications.map((app) => (
-                      <div 
+                      <div
                         key={app._id}
                         className="border border-gray-200 rounded-xl p-6 hover:shadow-md transition"
                       >
                         <div className="flex items-start justify-between mb-4">
                           <div className="flex items-start space-x-4">
                             <div className="bg-gradient-to-br from-primary-600 to-secondary-600 p-3 rounded-xl">
-                              <AcademicCapIcon className="h-6 w-6 text-white" />
+                              <AcademicCapIcon className="h-6 w-6 text-gray-800" />
                             </div>
                             <div>
                               <h3 className="text-lg font-bold text-gray-900">{app.student?.name}</h3>
@@ -339,13 +337,12 @@ const InternshipDetails = () => {
                             </div>
                           </div>
 
-                          <span className={`px-4 py-2 rounded-full text-sm font-semibold ${
-                            app.status === 'accepted' 
+                          <span className={`px-4 py-2 rounded-full text-sm font-semibold ${app.status === 'accepted'
                               ? 'bg-green-100 text-green-800'
                               : app.status === 'rejected'
-                              ? 'bg-red-100 text-red-800'
-                              : 'bg-yellow-100 text-yellow-800'
-                          }`}>
+                                ? 'bg-red-100 text-red-800'
+                                : 'bg-yellow-100 text-yellow-800'
+                            }`}>
                             {app.status.charAt(0).toUpperCase() + app.status.slice(1)}
                           </span>
                         </div>
@@ -406,14 +403,14 @@ const InternshipDetails = () => {
                           <div className="flex gap-3">
                             <button
                               onClick={() => handleUpdateApplicationStatus(app._id, 'accepted')}
-                              className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-medium"
+                              className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-green-600 text-gray-800 rounded-lg hover:bg-green-700 transition font-medium"
                             >
                               <CheckCircleIcon className="h-5 w-5" />
                               <span>Accept</span>
                             </button>
                             <button
                               onClick={() => handleUpdateApplicationStatus(app._id, 'rejected')}
-                              className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium"
+                              className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 bg-red-600 text-gray-800 rounded-lg hover:bg-red-700 transition font-medium"
                             >
                               <XCircleIcon className="h-5 w-5" />
                               <span>Reject</span>
@@ -432,7 +429,7 @@ const InternshipDetails = () => {
           <div className="lg:col-span-1">
             <div className="bg-white rounded-xl shadow-sm p-6 sticky top-24 space-y-6">
               <h3 className="text-xl font-bold text-gray-900">Internship Details</h3>
-              
+
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <MapPinIcon className="h-6 w-6 text-gray-400 flex-shrink-0 mt-1" />
@@ -483,7 +480,7 @@ const InternshipDetails = () => {
                 <button
                   onClick={handleApply}
                   disabled={applying}
-                  className="w-full mt-6 px-6 py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl font-bold hover:shadow-lg transition-all transform hover:scale-105 disabled:opacity-50"
+                  className="w-full mt-6 px-6 py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-gray-800 rounded-xl font-bold hover:shadow-lg transition-all transform hover:scale-105 disabled:opacity-50"
                 >
                   {applying ? 'Applying...' : 'Apply Now'}
                 </button>

@@ -22,10 +22,14 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.log('MongoDB Error:', err));
 
 // Routes
+// ... existing code ...
+
+// Routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/internships', require('./routes/internshipRoutes'));
 app.use('/api/applications', require('./routes/applicationRoutes'));
-app.use('/api/profile', require('./routes/profileRoutes')); // Add this line
+app.use('/api/profile', require('./routes/profileRoutes'));
+app.use('/api/subscription', require('./routes/subscriptionRoutes')); 
 
 const PORT = process.env.PORT || 5000;
 

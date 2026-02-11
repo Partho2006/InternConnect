@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { 
-  EnvelopeIcon, 
+import {
+  EnvelopeIcon,
   LockClosedIcon,
   ArrowRightIcon,
   SparklesIcon
@@ -33,7 +33,7 @@ const Login = () => {
     setLoading(true);
 
     const result = await login(formData);
-    
+
     if (result.success) {
       // Navigation handled by useEffect
     }
@@ -49,7 +49,7 @@ const Login = () => {
           <div className="text-center">
             <div className="flex justify-center mb-4">
               <div className="bg-gradient-to-r from-primary-600 to-secondary-600 p-3 rounded-2xl">
-                <SparklesIcon className="h-8 w-8 text-white" />
+                <SparklesIcon className="h-8 w-8 text-gray-800" />
               </div>
             </div>
             <h2 className="text-4xl font-extrabold text-gray-900 mb-2">
@@ -130,7 +130,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="group relative w-full flex justify-center items-center space-x-2 py-3 px-4 border border-transparent text-lg font-semibold rounded-xl text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-105 shadow-lg"
+              className="group relative w-full flex justify-center items-center space-x-2 py-3 px-4 border border-transparent text-lg font-semibold rounded-xl text-gray-800 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-105 shadow-lg"
             >
               {loading ? (
                 <div className="flex items-center space-x-2">
@@ -157,7 +157,7 @@ const Login = () => {
 
             {/* Sign Up Link */}
             <div className="text-center">
-              <Link 
+              <Link
                 to="/register"
                 className="inline-flex items-center space-x-1 font-medium text-primary-600 hover:text-primary-500 transition"
               >
@@ -179,7 +179,7 @@ const Login = () => {
       {/* Right Side - Image/Illustration */}
       <div className="hidden lg:block lg:flex-1 bg-gradient-to-br from-primary-600 via-purple-600 to-secondary-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-20"></div>
-        <div className="relative h-full flex flex-col justify-center items-center text-white p-12">
+        <div className="relative h-full flex flex-col justify-center items-center text-gray-800 p-12">
           <div className="max-w-md text-center space-y-6 animate-slide-up">
             <h2 className="text-5xl font-bold mb-4">
               Continue Your Journey
@@ -187,7 +187,7 @@ const Login = () => {
             <p className="text-xl text-gray-100">
               Access thousands of internship opportunities and take the next step in your career
             </p>
-            
+
             <div className="grid grid-cols-2 gap-4 mt-12">
               <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
                 <div className="text-3xl font-bold mb-2">500+</div>

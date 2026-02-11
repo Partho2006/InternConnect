@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { 
+import {
   UserIcon,
-  EnvelopeIcon, 
+  EnvelopeIcon,
   LockClosedIcon,
   ArrowRightIcon,
   SparklesIcon,
@@ -64,14 +64,14 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     setLoading(true);
 
     const { confirmPassword, ...dataToSend } = formData;
     const result = await register(dataToSend);
-    
+
     if (result.success) {
       // Navigation handled by useEffect
     }
@@ -83,7 +83,7 @@ const Register = () => {
       {/* Left Side - Illustration */}
       <div className="hidden lg:block lg:flex-1 bg-gradient-to-br from-primary-600 via-purple-600 to-secondary-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-20"></div>
-        <div className="relative h-full flex flex-col justify-center items-center text-white p-12">
+        <div className="relative h-full flex flex-col justify-center items-center text-gray-800 p-12">
           <div className="max-w-md text-center space-y-6 animate-slide-up">
             <h2 className="text-5xl font-bold mb-4">
               Start Your Journey
@@ -91,7 +91,7 @@ const Register = () => {
             <p className="text-xl text-gray-100">
               Join thousands of students and companies finding success on InternConnect
             </p>
-            
+
             <div className="space-y-4 mt-12 text-left">
               <div className="flex items-start space-x-3 bg-white/10 backdrop-blur-sm p-4 rounded-xl">
                 <AcademicCapIcon className="h-6 w-6 flex-shrink-0 mt-1" />
@@ -119,7 +119,7 @@ const Register = () => {
           <div className="text-center">
             <div className="flex justify-center mb-4">
               <div className="bg-gradient-to-r from-primary-600 to-secondary-600 p-3 rounded-2xl">
-                <SparklesIcon className="h-8 w-8 text-white" />
+                <SparklesIcon className="h-8 w-8 text-gray-800" />
               </div>
             </div>
             <h2 className="text-4xl font-extrabold text-gray-900 mb-2">
@@ -135,18 +135,15 @@ const Register = () => {
             <button
               type="button"
               onClick={() => setFormData({ ...formData, role: 'student' })}
-              className={`p-4 rounded-xl border-2 transition-all ${
-                formData.role === 'student'
+              className={`p-4 rounded-xl border-2 transition-all ${formData.role === 'student'
                   ? 'border-primary-600 bg-primary-50'
                   : 'border-gray-200 hover:border-gray-300'
-              }`}
+                }`}
             >
-              <AcademicCapIcon className={`h-8 w-8 mx-auto mb-2 ${
-                formData.role === 'student' ? 'text-primary-600' : 'text-gray-400'
-              }`} />
-              <div className={`font-semibold ${
-                formData.role === 'student' ? 'text-primary-600' : 'text-gray-700'
-              }`}>
+              <AcademicCapIcon className={`h-8 w-8 mx-auto mb-2 ${formData.role === 'student' ? 'text-primary-600' : 'text-gray-400'
+                }`} />
+              <div className={`font-semibold ${formData.role === 'student' ? 'text-primary-600' : 'text-gray-700'
+                }`}>
                 Student
               </div>
             </button>
@@ -154,18 +151,15 @@ const Register = () => {
             <button
               type="button"
               onClick={() => setFormData({ ...formData, role: 'company' })}
-              className={`p-4 rounded-xl border-2 transition-all ${
-                formData.role === 'company'
+              className={`p-4 rounded-xl border-2 transition-all ${formData.role === 'company'
                   ? 'border-primary-600 bg-primary-50'
                   : 'border-gray-200 hover:border-gray-300'
-              }`}
+                }`}
             >
-              <BuildingOfficeIcon className={`h-8 w-8 mx-auto mb-2 ${
-                formData.role === 'company' ? 'text-primary-600' : 'text-gray-400'
-              }`} />
-              <div className={`font-semibold ${
-                formData.role === 'company' ? 'text-primary-600' : 'text-gray-700'
-              }`}>
+              <BuildingOfficeIcon className={`h-8 w-8 mx-auto mb-2 ${formData.role === 'company' ? 'text-primary-600' : 'text-gray-400'
+                }`} />
+              <div className={`font-semibold ${formData.role === 'company' ? 'text-primary-600' : 'text-gray-700'
+                }`}>
                 Company
               </div>
             </button>
@@ -188,9 +182,8 @@ const Register = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className={`block w-full pl-10 pr-3 py-3 border rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition ${
-                    errors.name ? 'border-red-500' : 'border-gray-300'
-                  }`}
+                  className={`block w-full pl-10 pr-3 py-3 border rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition ${errors.name ? 'border-red-500' : 'border-gray-300'
+                    }`}
                   placeholder="John Doe"
                 />
               </div>
@@ -212,9 +205,8 @@ const Register = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className={`block w-full pl-10 pr-3 py-3 border rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition ${
-                    errors.email ? 'border-red-500' : 'border-gray-300'
-                  }`}
+                  className={`block w-full pl-10 pr-3 py-3 border rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition ${errors.email ? 'border-red-500' : 'border-gray-300'
+                    }`}
                   placeholder="you@example.com"
                 />
               </div>
@@ -236,9 +228,8 @@ const Register = () => {
                   value={formData.password}
                   onChange={handleChange}
                   required
-                  className={`block w-full pl-10 pr-3 py-3 border rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition ${
-                    errors.password ? 'border-red-500' : 'border-gray-300'
-                  }`}
+                  className={`block w-full pl-10 pr-3 py-3 border rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition ${errors.password ? 'border-red-500' : 'border-gray-300'
+                    }`}
                   placeholder="••••••••"
                 />
               </div>
@@ -260,9 +251,8 @@ const Register = () => {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   required
-                  className={`block w-full pl-10 pr-3 py-3 border rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition ${
-                    errors.confirmPassword ? 'border-red-500' : 'border-gray-300'
-                  }`}
+                  className={`block w-full pl-10 pr-3 py-3 border rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'
+                    }`}
                   placeholder="••••••••"
                 />
               </div>
@@ -293,7 +283,7 @@ const Register = () => {
             <button
               type="submit"
               disabled={loading}
-              className="group relative w-full flex justify-center items-center space-x-2 py-3 px-4 border border-transparent text-lg font-semibold rounded-xl text-white bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-105 shadow-lg"
+              className="group relative w-full flex justify-center items-center space-x-2 py-3 px-4 border border-transparent text-lg font-semibold rounded-xl text-gray-800 bg-gradient-to-r from-primary-600 to-secondary-600 hover:from-primary-700 hover:to-secondary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-105 shadow-lg"
             >
               {loading ? (
                 <div className="flex items-center space-x-2">
@@ -320,7 +310,7 @@ const Register = () => {
 
             {/* Sign In Link */}
             <div className="text-center">
-              <Link 
+              <Link
                 to="/login"
                 className="inline-flex items-center space-x-1 font-medium text-primary-600 hover:text-primary-500 transition"
               >

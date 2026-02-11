@@ -3,7 +3,7 @@ import axios from '../utils/axios';
 import { AuthContext } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 import InternshipCard from '../components/internships/InternshipCard';
-import { 
+import {
   MagnifyingGlassIcon,
   FunnelIcon,
   BriefcaseIcon,
@@ -14,6 +14,7 @@ import {
   AdjustmentsHorizontalIcon
 } from '@heroicons/react/24/outline';
 import toast from 'react-hot-toast';
+import SubscriptionBanner from '../components/subscription/SubscriptionBanner';
 
 const StudentDashboard = () => {
   const [internships, setInternships] = useState([]);
@@ -51,11 +52,11 @@ const StudentDashboard = () => {
 
   const filteredInternships = internships.filter(internship => {
     const matchesSearch = internship.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         internship.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         internship.skills?.some(skill => skill.toLowerCase().includes(searchTerm.toLowerCase()));
-    
+      internship.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      internship.skills?.some(skill => skill.toLowerCase().includes(searchTerm.toLowerCase()));
+
     const matchesFilter = filterType === 'all' || internship.type === filterType;
-    
+
     return matchesSearch && matchesFilter;
   });
 
@@ -79,27 +80,28 @@ const StudentDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SubscriptionBanner />
       {/* Hero Header */}
-      <div className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
+      <div className="bg-gradient-to-r from-primary-600 to-secondary-600 text-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center justify-between">
             <div className="animate-slide-up">
               <h1 className="text-4xl font-bold mb-2">
                 Welcome back, {user?.name}! 👋
               </h1>
-              <p className="text-xl text-gray-100">
+              <p className="text-xl text-gray-600">
                 Ready to find your dream internship?
               </p>
             </div>
-            
+
             <div className="hidden md:flex items-center space-x-4">
               <div className="bg-white/10 backdrop-blur-sm px-6 py-4 rounded-xl text-center">
                 <div className="text-3xl font-bold">{stats.total}</div>
-                <div className="text-sm text-gray-200">Applications</div>
+                <div className="text-sm text-gray-700">Applications</div>
               </div>
               <div className="bg-white/10 backdrop-blur-sm px-6 py-4 rounded-xl text-center">
                 <div className="text-3xl font-bold">{stats.accepted}</div>
-                <div className="text-sm text-gray-200">Accepted</div>
+                <div className="text-sm text-gray-700">Accepted</div>
               </div>
             </div>
           </div>
@@ -126,11 +128,10 @@ const StudentDashboard = () => {
           <nav className="flex space-x-8">
             <button
               onClick={() => setActiveTab('browse')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors relative ${
-                activeTab === 'browse'
+              className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors relative ${activeTab === 'browse'
                   ? 'border-primary-600 text-primary-600'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
+                }`}
             >
               <div className="flex items-center space-x-2">
                 <BriefcaseIcon className="h-5 w-5" />
@@ -140,14 +141,13 @@ const StudentDashboard = () => {
                 </span>
               </div>
             </button>
-            
+
             <button
               onClick={() => setActiveTab('applications')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
-                activeTab === 'applications'
+              className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === 'applications'
                   ? 'border-primary-600 text-primary-600'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
+                }`}
             >
               <div className="flex items-center space-x-2">
                 <ClockIcon className="h-5 w-5" />
@@ -160,11 +160,10 @@ const StudentDashboard = () => {
 
             <button
               onClick={() => setActiveTab('analytics')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
-                activeTab === 'analytics'
+              className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === 'analytics'
                   ? 'border-primary-600 text-primary-600'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
+                }`}
             >
               <div className="flex items-center space-x-2">
                 <ChartBarIcon className="h-5 w-5" />
@@ -236,21 +235,21 @@ const StudentDashboard = () => {
                 <BriefcaseIcon className="h-16 w-16 text-gray-300 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">No internships found</h3>
                 <p className="text-gray-500">
-                  {searchTerm || filterType !== 'all' 
-                    ? 'Try adjusting your filters' 
+                  {searchTerm || filterType !== 'all'
+                    ? 'Try adjusting your filters'
                     : 'Check back later for new opportunities'}
                 </p>
               </div>
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredInternships.map((internship, index) => (
-                  <div 
-                    key={internship._id} 
+                  <div
+                    key={internship._id}
                     className="animate-slide-up"
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
-                    <InternshipCard 
-                      internship={internship} 
+                    <InternshipCard
+                      internship={internship}
                       onApplySuccess={fetchApplications}
                     />
                   </div>
@@ -313,7 +312,7 @@ const StudentDashboard = () => {
                 <p className="text-gray-500 mb-6">Start applying to internships to see them here</p>
                 <button
                   onClick={() => setActiveTab('browse')}
-                  className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition"
+                  className="bg-gradient-to-r from-primary-600 to-secondary-600 text-gray-800 px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition"
                 >
                   Browse Internships
                 </button>
@@ -321,8 +320,8 @@ const StudentDashboard = () => {
             ) : (
               <div className="space-y-4">
                 {applications.map((app, index) => (
-                  <div 
-                    key={app._id} 
+                  <div
+                    key={app._id}
                     className="bg-white rounded-xl shadow-sm hover:shadow-md transition p-6 animate-slide-up"
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
@@ -332,21 +331,20 @@ const StudentDashboard = () => {
                           <h3 className="text-xl font-bold text-gray-900">
                             {app.internship?.title}
                           </h3>
-                          <span className={`ml-4 px-4 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap ${
-                            app.status === 'accepted' 
-                              ? 'bg-green-100 text-green-800' 
-                              : app.status === 'rejected' 
-                              ? 'bg-red-100 text-red-800' 
-                              : 'bg-yellow-100 text-yellow-800'
-                          }`}>
+                          <span className={`ml-4 px-4 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap ${app.status === 'accepted'
+                              ? 'bg-green-100 text-green-800'
+                              : app.status === 'rejected'
+                                ? 'bg-red-100 text-red-800'
+                                : 'bg-yellow-100 text-yellow-800'
+                            }`}>
                             {app.status.charAt(0).toUpperCase() + app.status.slice(1)}
                           </span>
                         </div>
-                        
+
                         <p className="text-gray-600 mb-3">
                           {app.internship?.company?.companyName || app.internship?.company?.name}
                         </p>
-                        
+
                         <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500">
                           <span className="flex items-center">
                             <ClockIcon className="h-4 w-4 mr-1" />

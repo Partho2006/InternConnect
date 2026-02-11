@@ -32,7 +32,7 @@ const InternshipCard = ({ internship }) => {
     <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition p-6">
       <div className="flex justify-between items-start mb-3">
         <h3 className="text-xl font-bold text-gray-800">{internship.title}</h3>
-        <span className="bg-primary text-white px-3 py-1 rounded-full text-xs font-semibold">
+        <span className="bg-primary text-gray-800 px-3 py-1 rounded-full text-xs font-semibold">
           {internship.type}
         </span>
       </div>
@@ -70,16 +70,16 @@ const InternshipCard = ({ internship }) => {
       </div>
 
       <div className="flex gap-2">
-        <Link 
+        <Link
           to={`/internships/${internship._id}`}
-          className="flex-1 text-center bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition font-medium"
+          className="flex-1 text-center bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400 transition font-medium"
         >
           View Details
         </Link>
         <button
           onClick={handleApply}
           disabled={applying || applied}
-          className="flex-1 bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-lg hover:opacity-90 transition font-medium disabled:opacity-50"
+          className="flex-1 text-gray-800 px-4 py-2 rounded-lg hover:opacity-90 transition font-medium disabled:opacity-50 hover:bg-gray-400"
         >
           {applying ? 'Applying...' : applied ? 'Applied' : 'Apply Now'}
         </button>

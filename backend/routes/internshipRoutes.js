@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Internship = require('../models/Internship');
 const auth = require('../middleware/auth');
+const { checkPostLimit } = require('../middleware/checkLimits');
 
 // Get all internships
 router.get('/', async (req, res) => {
@@ -32,7 +33,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Post new internship (company only)
-router.post('/', auth, async (req, res) => {
+router.post('/', auth, checkPostLimit, async (req, res) => {
   try {
     if (req.user.role !== 'company') {
       return res.status(403).json({ message: 'Only companies can post internships' });
@@ -44,6 +45,10 @@ router.post('/', auth, async (req, res) => {
     });
 
     await internship.save();
+    
+    // Increment post counter
+    await req.subscription.incrementPosts();
+
     res.json(internship);
   } catch (err) {
     res.status(500).json({ message: 'Server error' });

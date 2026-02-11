@@ -16,6 +16,7 @@ import {
   ChartBarIcon,
   BuildingOfficeIcon
 } from '@heroicons/react/24/outline';
+import SubscriptionBanner from '../components/subscription/SubscriptionBanner';
 
 const CompanyDashboard = () => {
   const [internships, setInternships] = useState([]);
@@ -152,8 +153,9 @@ const CompanyDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SubscriptionBanner />
       {/* Hero Header */}
-      <div className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
+      <div className=" text-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center justify-between">
             <div className="animate-slide-up">
@@ -161,7 +163,7 @@ const CompanyDashboard = () => {
                 <BuildingOfficeIcon className="h-10 w-10" />
                 <h1 className="text-4xl font-bold">Company Dashboard</h1>
               </div>
-              <p className="text-xl text-gray-100">
+              <p className="text-xl text-gray-600">
                 Manage your internship postings and find talented candidates
               </p>
             </div>
@@ -181,7 +183,7 @@ const CompanyDashboard = () => {
                   status: 'active'
                 });
               }}
-              className="hidden md:flex items-center space-x-2 bg-white text-primary-600 px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-all transform hover:scale-105 shadow-xl"
+              className="hidden md:flex items-center space-x-2 bg-gray-100 text-purple-600 px-6 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-all transform hover:scale-105 shadow-xl"
             >
               <PlusIcon className="h-5 w-5" />
               <span>Post New Internship</span>
@@ -192,19 +194,19 @@ const CompanyDashboard = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
               <div className="text-3xl font-bold">{stats.total}</div>
-              <div className="text-sm text-gray-200">Total Postings</div>
+              <div className="text-sm text-gray-600">Total Postings</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
               <div className="text-3xl font-bold">{stats.active}</div>
-              <div className="text-sm text-gray-200">Active</div>
+              <div className="text-sm text-gray-600">Active</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
               <div className="text-3xl font-bold">{stats.totalApplicants}</div>
-              <div className="text-sm text-gray-200">Total Applicants</div>
+              <div className="text-sm text-gray-600">Total Applicants</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
               <div className="text-3xl font-bold">{stats.pendingApplicants}</div>
-              <div className="text-sm text-gray-200">Pending Review</div>
+              <div className="text-sm text-gray-600">Pending Review</div>
             </div>
           </div>
         </div>
@@ -412,13 +414,13 @@ const CompanyDashboard = () => {
                     setShowForm(false);
                     setEditingId(null);
                   }}
-                  className="px-6 py-3 border border-gray-300 rounded-xl text-gray-700 font-semibold hover:bg-gray-50 transition"
+                  className="px-6 py-3 border border-gray-500 rounded-xl text-gray-700 font-semibold hover:bg-gray-50 transition-all transform hover:scale-105"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-8 py-3 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all transform hover:scale-105"
+                  className="px-8 py-3 text-gray-800 rounded-xl font-semibold hover:shadow-lg border border-gray-500 transition-all transform hover:scale-105"
                 >
                   {editingId ? 'Update Internship' : 'Post Internship'}
                 </button>
@@ -432,12 +434,12 @@ const CompanyDashboard = () => {
           <div className="animate-fade-in">
             {internships.length === 0 ? (
               <div className="bg-white rounded-xl shadow-sm p-16 text-center">
-                <BriefcaseIcon className="h-20 w-20 text-gray-300 mx-auto mb-4" />
+                <BriefcaseIcon className="h-20 w-20 text-gray-600 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">No internships posted yet</h3>
                 <p className="text-gray-500 mb-6">Start by posting your first internship opportunity</p>
                 <button
                   onClick={() => setShowForm(true)}
-                  className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition"
+                  className="inline-flex items-center space-x-2 text-gray-800 px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition"
                 >
                   <PlusIcon className="h-5 w-5" />
                   <span>Post Your First Internship</span>
@@ -523,7 +525,7 @@ const CompanyDashboard = () => {
                           </span>
                         ))}
                         {internship.skills?.length > 3 && (
-                          <span className="text-xs text-gray-500 px-2 py-1">
+                          <span className="text-xs text-gray-600 px-2 py-1">
                             +{internship.skills.length - 3}
                           </span>
                         )}
@@ -548,7 +550,7 @@ const CompanyDashboard = () => {
                       {/* Actions */}
                       <Link
                         to={`/internships/${internship._id}`}
-                        className="block w-full text-center px-4 py-2.5 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition font-medium"
+                        className="block w-full text-center px-4 py-2.5 bg-primary-600 text-gray-800 rounded-lg hover:bg-primary-700 transition font-medium"
                       >
                         View Applications ({internshipApps.length})
                       </Link>
@@ -563,7 +565,7 @@ const CompanyDashboard = () => {
         {activeTab === 'analytics' && (
           <div className="animate-fade-in">
             <div className="bg-white rounded-xl shadow-sm p-8 text-center">
-              <ChartBarIcon className="h-16 w-16 text-gray-300 mx-auto mb-4" />
+              <ChartBarIcon className="h-16 w-16 text-gray-600 mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Analytics Coming Soon</h3>
               <p className="text-gray-500">
                 Track application trends, candidate quality, time-to-hire, and more

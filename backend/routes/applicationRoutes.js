@@ -3,9 +3,10 @@ const router = express.Router();
 const Application = require('../models/Application');
 const Internship = require('../models/Internship');
 const auth = require('../middleware/auth');
+const { checkApplicationLimit } = require('../middleware/checkLimits');
 
-// Apply to internship (student only)
-router.post('/', auth, async (req, res) => {
+// Apply to internship (student only) - ADD checkApplicationLimit middleware
+router.post('/', auth, checkApplicationLimit, async (req, res) => {
   try {
     if (req.user.role !== 'student') {
       return res.status(403).json({ message: 'Only students can apply' });
@@ -35,6 +36,9 @@ router.post('/', auth, async (req, res) => {
     await Internship.findByIdAndUpdate(internshipId, {
       $push: { applicants: req.user.id }
     });
+
+    // Increment application counter
+    await req.subscription.incrementApplications();
 
     res.json(application);
   } catch (err) {
