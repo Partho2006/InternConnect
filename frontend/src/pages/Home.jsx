@@ -47,50 +47,54 @@ const Home = () => {
   return (
     <div>
       {/* ========== HERO SECTION ========== */}
-      <section className="relative bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-gray-800">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white">
 
-        <div className="relative max-w-7xl mx-auto px-8 py-8 ">
-          <div className="text-center max-w-5xl mx-auto">
+        {/* Soft Glow Background */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.15),transparent_40%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(255,255,255,0.1),transparent_40%)]" />
+
+        <div className="relative max-w-7xl mx-auto px-6 pt-12 pb-16">
+          <div className="text-center max-w-4xl mx-auto">
 
             {/* Badge */}
-            <div className="mb-8">
-              <span className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-lg px-4 py-4 rounded-full text-base font-semibold border-2 border-white/30">
-                <SparklesIcon className="w-6 h-6" />
-                India's #1 Internship Platform
+            <div className="mb-10">
+              <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-5 py-2 rounded-full text-sm font-semibold border border-white/30 shadow-md">
+                <SparklesIcon className="w-5 h-5" />
+                India’s #1 Internship Platform
               </span>
             </div>
 
-            {/* Main Heading - HUGE */}
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black mb-8">
-              Find Your Perfect
-              <br />
+            {/* Heading */}
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8">
+              Find Your Perfect{" "}
               <span className="bg-gradient-to-r from-yellow-300 via-orange-300 to-pink-300 bg-clip-text text-transparent">
                 Internship
               </span>
             </h1>
 
-            {/* Subtitle - LARGE */}
-            <p className="text-2xl md:text-3xl text-gray-800/95 mb-8 leading-relaxed max-w-4xl mx-auto font-light">
+            {/* Subtitle */}
+            <p className="text-lg md:text-xl text-white/90 mb-12 leading-relaxed max-w-2xl mx-auto">
               Connect with top companies, gain real-world experience, and kickstart your dream career today.
             </p>
 
-            {/* CTA Buttons - BIG */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-5 justify-center">
+
               <Link
                 to="/register"
-                className="group bg-white text-purple-700 px-8 py-4 rounded-2xl font-bold text-xl shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-300 flex items-center justify-center gap-3"
+                className="group bg-white text-purple-700 px-8 py-4 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 Get Started Free
-                <ArrowRightIcon className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
 
               <Link
                 to="/login"
-                className="bg-white/10 backdrop-blur-lg border-3 border-white/50 px-8 py-4 rounded-2xl font-bold text-xl hover:bg-white/20 transition-all duration-300"
+                className="px-8 py-4 rounded-xl font-semibold text-lg border border-white/40 hover:bg-white/20 transition-all duration-300"
               >
                 Sign In
               </Link>
+
             </div>
 
           </div>
@@ -197,11 +201,11 @@ const Home = () => {
       </section>
 
       {/* ========== HOW IT WORKS SECTION ========== */}
-      <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-800 py-32">
+      <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-gray-300 py-32">
         <div className="max-w-7xl mx-auto px-8">
 
           <div className="text-center mb-16">
-            <span className="inline-block bg-white/10 text-gray-800 px-6 py-3 rounded-full text-sm font-bold mb-8 uppercase tracking-wide">
+            <span className="inline-block bg-white/10 text-white px-6 py-3 rounded-full text-sm font-bold mb-8 uppercase tracking-wide">
               How It Works
             </span>
             <h2 className="text-5xl md:text-6xl font-black mb-8">
@@ -216,9 +220,9 @@ const Home = () => {
               { step: '03', title: 'Get Hired', desc: 'Connect with companies and start your career journey' }
             ].map((item, index) => (
               <div key={index} className="text-center">
-                <div className="text-8xl font-black text-gray-800/20 mb-6">{item.step}</div>
+                <div className="text-8xl font-black text-white mb-6">{item.step}</div>
                 <h3 className="text-3xl font-bold mb-6">{item.title}</h3>
-                <p className="text-xl text-gray-400 leading-relaxed">{item.desc}</p>
+                <p className="text-xl text-gray-300 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -230,7 +234,7 @@ const Home = () => {
       <PricingSection />
 
       {/* ========== FINAL CTA SECTION ========== */}
-      <section className="bg-gradient-to-r bg-gray-900 text-gray-800 py-16">
+      <section className="bg-gray-900 text-white py-16">
         <div className="max-w-5xl mx-auto px-8 text-center">
 
           <div className="mb-8">
@@ -241,7 +245,7 @@ const Home = () => {
             Ready to Get Started?
           </h2>
 
-          <p className="text-2xl md:text-3xl mb-16 text-gray-800/95 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-2xl md:text-3xl mb-16 text-white max-w-3xl mx-auto leading-relaxed">
             Join thousands of students and companies already using InternConnect
           </p>
 
@@ -254,7 +258,7 @@ const Home = () => {
           </Link>
 
           {/* Trust Signals */}
-          <div className="mt-16 flex flex-wrap items-center justify-center gap-12 text-lg text-gray-800/90">
+          <div className="mt-16 flex flex-wrap items-center justify-center gap-12 text-lg text-white">
             <div className="flex items-center gap-3">
               <CheckCircleIcon className="w-6 h-6" />
               <span>Setup in 2 minutes</span>
