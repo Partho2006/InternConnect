@@ -23,8 +23,8 @@ const SubscriptionBanner = () => {
   if (loading || !subscription) return null;
 
   const isNearLimit = subscription.plan === 'free' && (
-    subscription.dailyApplications >= subscription.maxDailyApplications - 2 ||
-    subscription.dailyPosts >= subscription.maxDailyPosts
+    subscription.dailyApplications >= subscription.maxDailyApplications - 3 ||
+    subscription.dailyPosts >= subscription.maxDailyPosts - 2
   );
 
   if (!isNearLimit && subscription.plan !== 'free') return null;
@@ -53,8 +53,8 @@ const SubscriptionBanner = () => {
           </p>
         </div>
         <a
-          href="#pricing"
-          className="text-sm font-semibold text-primary-600 hover:text-primary-700"
+          href="/#pricing"
+          className="text-sm font-semibold text-black"
         >
           Upgrade →
         </a>

@@ -24,14 +24,14 @@ const SubscriptionSchema = new mongoose.Schema({
   lastApplicationDate: Date,
   lastPostDate: Date,
   
-  // Plan limits
+  // Plan limits - UPDATED FREE PLAN
   maxDailyApplications: {
     type: Number,
-    default: 5 // Free plan
+    default: 10 // FREE PLAN: 10 applications per day
   },
   maxDailyPosts: {
     type: Number,
-    default: 1 // Free plan
+    default: 5 // FREE PLAN: 5 posts per day
   },
   
   // Stripe info
@@ -59,7 +59,6 @@ SubscriptionSchema.methods.canApply = function() {
   const today = new Date().toDateString();
   const lastDate = this.lastApplicationDate ? this.lastApplicationDate.toDateString() : null;
   
-  // Reset counter if it's a new day
   if (lastDate !== today) {
     this.dailyApplications = 0;
     this.lastApplicationDate = new Date();
@@ -73,7 +72,6 @@ SubscriptionSchema.methods.canPost = function() {
   const today = new Date().toDateString();
   const lastDate = this.lastPostDate ? this.lastPostDate.toDateString() : null;
   
-  // Reset counter if it's a new day
   if (lastDate !== today) {
     this.dailyPosts = 0;
     this.lastPostDate = new Date();
