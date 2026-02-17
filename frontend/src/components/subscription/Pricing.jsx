@@ -27,8 +27,8 @@ const Pricing = () => {
 
     setLoading(plan);
     try {
-      const res = await axios.post('/stripe/create-checkout-session', { plan });
-      window.location.href = res.data.url;
+      navigate('/pricing');
+      return;
     } catch (err) {
       toast.error('Failed to start checkout');
       setLoading(null);

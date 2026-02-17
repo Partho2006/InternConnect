@@ -15,6 +15,7 @@ import StudentDashboard from './pages/StudentDashboard';
 import CompanyDashboard from './pages/CompanyDashboard';
 import InternshipDetails from './pages/InternshipDetails';
 import PrivateRoute from './components/auth/PrivateRoute';
+import PricingSection from './components/subscription/PricingSection';
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/pricing" element={<PricingSection />} />
               
               <Route 
                 path="/student/dashboard" 
