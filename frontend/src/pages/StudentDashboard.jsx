@@ -15,6 +15,7 @@ import {
 } from '@heroicons/react/24/outline';
 import toast from 'react-hot-toast';
 import SubscriptionBanner from '../components/subscription/SubscriptionBanner';
+import StudentAnalytics from '../components/analytics/StudentAnalytics';
 
 const StudentDashboard = () => {
   const [internships, setInternships] = useState([]);
@@ -129,8 +130,8 @@ const StudentDashboard = () => {
             <button
               onClick={() => setActiveTab('browse')}
               className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors relative ${activeTab === 'browse'
-                  ? 'border-primary-600 text-primary-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                ? 'border-primary-600 text-primary-600'
+                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
             >
               <div className="flex items-center space-x-2">
@@ -145,8 +146,8 @@ const StudentDashboard = () => {
             <button
               onClick={() => setActiveTab('applications')}
               className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === 'applications'
-                  ? 'border-primary-600 text-primary-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                ? 'border-primary-600 text-primary-600'
+                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
             >
               <div className="flex items-center space-x-2">
@@ -161,8 +162,8 @@ const StudentDashboard = () => {
             <button
               onClick={() => setActiveTab('analytics')}
               className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors ${activeTab === 'analytics'
-                  ? 'border-primary-600 text-primary-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                ? 'border-primary-600 text-primary-600'
+                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
             >
               <div className="flex items-center space-x-2">
@@ -332,10 +333,10 @@ const StudentDashboard = () => {
                             {app.internship?.title}
                           </h3>
                           <span className={`ml-4 px-4 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap ${app.status === 'accepted'
-                              ? 'bg-green-100 text-green-800'
-                              : app.status === 'rejected'
-                                ? 'bg-red-100 text-red-800'
-                                : 'bg-yellow-100 text-yellow-800'
+                            ? 'bg-green-100 text-green-800'
+                            : app.status === 'rejected'
+                              ? 'bg-red-100 text-red-800'
+                              : 'bg-yellow-100 text-yellow-800'
                             }`}>
                             {app.status.charAt(0).toUpperCase() + app.status.slice(1)}
                           </span>
@@ -381,16 +382,9 @@ const StudentDashboard = () => {
           </div>
         )}
 
+        {/* Analytics Tab - FIXED */}
         {activeTab === 'analytics' && (
-          <div className="animate-fade-in">
-            <div className="bg-white rounded-xl shadow-sm p-8 text-center">
-              <ChartBarIcon className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Analytics Coming Soon</h3>
-              <p className="text-gray-500">
-                Track your application success rate, profile views, and more
-              </p>
-            </div>
-          </div>
+          <StudentAnalytics applications={applications} />
         )}
       </div>
     </div>
