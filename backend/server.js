@@ -17,6 +17,7 @@ app.use(cors({
 // Body parser
 app.use(express.json());
 
+
 // Serve uploaded files statically - IMPORTANT!
 // This allows accessing files via http://localhost:5000/uploads/resumes/filename.pdf
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -43,6 +44,7 @@ app.use('/api/internships', require('./routes/internshipRoutes'));
 app.use('/api/applications', require('./routes/applicationRoutes'));
 app.use('/api/profile', require('./routes/profileRoutes'));
 app.use('/api/subscription', require('./routes/subscriptionRoutes'));
+app.use('/api/reviews', require('./routes/reviewRoutes'));
 
 const PORT = process.env.PORT || 5000;
 

@@ -90,4 +90,16 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// Get single company profile (public)
+router.get('/company/:id', async (req, res) => {
+  try {
+    const company = await User.findById(req.params.id)
+      .select('companyName name companyLogo industry location companySize companyDescription companyWebsite');
+    if (!company) return res.status(404).json({ message: 'Not found' });
+    res.json(company);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 module.exports = router;

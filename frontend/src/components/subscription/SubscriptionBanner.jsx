@@ -53,7 +53,7 @@ const SubscriptionBanner = () => {
           </p>
         </div>
         <a
-          href="/#pricing"
+          href="/pricing"
           className="text-sm font-semibold text-black"
         >
           Upgrade →

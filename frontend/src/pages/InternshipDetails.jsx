@@ -117,14 +117,14 @@ const InternshipDetails = () => {
       setResume(null);
       setCoverLetter('');
       toast.success('Application submitted successfully!');
-      
+
       if (user?.role === 'company') {
         fetchApplications();
       }
     } catch (err) {
       const errorMsg = err.response?.data?.message || 'Failed to apply';
       toast.error(errorMsg);
-      
+
       if (err.response?.data?.limitReached) {
         toast.error('Daily limit reached! Upgrade your plan.', { duration: 5000 });
       }
@@ -196,20 +196,18 @@ const InternshipDetails = () => {
                     </span>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      internship.type === 'remote'
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${internship.type === 'remote'
                         ? 'bg-green-100 text-green-800'
                         : internship.type === 'onsite'
-                        ? 'bg-blue-100 text-blue-800'
-                        : 'bg-purple-100 text-purple-800'
-                    }`}>
+                          ? 'bg-blue-100 text-blue-800'
+                          : 'bg-purple-100 text-purple-800'
+                      }`}>
                       {internship.type}
                     </span>
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                      internship.status === 'active'
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${internship.status === 'active'
                         ? 'bg-green-100 text-green-800'
                         : 'bg-gray-100 text-gray-800'
-                    }`}>
+                      }`}>
                       {internship.status}
                     </span>
                   </div>
@@ -298,6 +296,13 @@ const InternshipDetails = () => {
                     </div>
                   </div>
 
+                  <Link
+                    to={`/company/${internship.company?._id}/reviews`}
+                    className="inline-flex items-center gap-2 text-orange-500 font-bold hover:text-orange-600 text-sm mt-1 hover:underline transition"
+                  >
+                    ⭐ View & Write Anonymous Reviews
+                  </Link>
+
                   {internship.company.companyWebsite && (
                     <div className="flex items-center space-x-3">
                       <GlobeAltIcon className="h-6 w-6 text-gray-400" />
@@ -346,8 +351,8 @@ const InternshipDetails = () => {
 
             {/* ========== APPLICATIONS SECTION ========== */}
             {isCompanyOwner && (
-              <div 
-                ref={applicationsRef} 
+              <div
+                ref={applicationsRef}
                 className="bg-white rounded-2xl shadow-lg p-8 scroll-mt-20 border-2 border-purple-200"
               >
                 <div className="flex items-center justify-between mb-8 pb-6 border-b-2 border-purple-100">
@@ -380,13 +385,12 @@ const InternshipDetails = () => {
                           <span className="bg-purple-600 text-white px-6 py-2 rounded-full text-lg font-black">
                             Applicant #{index + 1}
                           </span>
-                          <span className={`px-6 py-3 rounded-full text-lg font-black ${
-                            app.status === 'accepted'
+                          <span className={`px-6 py-3 rounded-full text-lg font-black ${app.status === 'accepted'
                               ? 'bg-green-500 text-white'
                               : app.status === 'rejected'
-                              ? 'bg-red-500 text-white'
-                              : 'bg-yellow-400 text-gray-900'
-                          }`}>
+                                ? 'bg-red-500 text-white'
+                                : 'bg-yellow-400 text-gray-900'
+                            }`}>
                             {app.status.toUpperCase()}
                           </span>
                         </div>
@@ -427,10 +431,10 @@ const InternshipDetails = () => {
                                     {app.resumeOriginalName || 'resume.pdf'}
                                   </p>
                                   <p className="text-sm text-gray-500 mt-2">
-                                    Submitted on {new Date(app.appliedAt).toLocaleDateString('en-US', { 
-                                      year: 'numeric', 
-                                      month: 'long', 
-                                      day: 'numeric' 
+                                    Submitted on {new Date(app.appliedAt).toLocaleDateString('en-US', {
+                                      year: 'numeric',
+                                      month: 'long',
+                                      day: 'numeric'
                                     })}
                                   </p>
                                 </div>

@@ -16,6 +16,7 @@ import CompanyDashboard from './pages/CompanyDashboard';
 import InternshipDetails from './pages/InternshipDetails';
 import PrivateRoute from './components/auth/PrivateRoute';
 import PricingSection from './components/subscription/PricingSection';
+import CompanyReviews from './pages/CompanyReviews';
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/pricing" element={<PricingSection />} />
+              <Route path="/company/:companyId/reviews" element={<CompanyReviews />} />
               
               <Route 
                 path="/student/dashboard" 
