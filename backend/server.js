@@ -19,7 +19,7 @@ app.use(express.json());
 
 
 // Serve uploaded files statically - IMPORTANT!
-// This allows accessing files via http://localhost:5000/uploads/resumes/filename.pdf
+// This allows accessing files via import.meta.env.VITE_API_URL + /uploads/resumes/filename.pdf
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Add logging for static file requests (for debugging)

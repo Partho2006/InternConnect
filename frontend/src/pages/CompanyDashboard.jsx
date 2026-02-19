@@ -137,7 +137,7 @@ const ProfileDrawer = ({ app, onClose, onStatusUpdate }) => {
                   </div>
                 </div>
                 <a
-                  href={`http://localhost:5000${app.resumeUrl}`}
+                  href={import.meta.env.VITE_API_URL + `${app.resumeUrl}`}
                   target="_blank" rel="noopener noreferrer" download
                   className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-4 py-2.5 rounded-xl font-bold text-sm transition shadow-md"
                 >
@@ -358,7 +358,7 @@ const ApplicantsPanel = ({ internship, onBack, allApps, onStatusUpdate }) => {
 
                     {app.resumeUrl && (
                       <a
-                        href={`http://localhost:5000${app.resumeUrl}`}
+                        href={import.meta.env.VITE_API_URL + `${app.resumeUrl}`}
                         target="_blank" rel="noopener noreferrer" download
                         className="flex items-center gap-1.5 px-3 py-2 bg-gray-50 hover:bg-gray-100 text-gray-600 border border-gray-200 rounded-xl font-bold text-sm transition"
                         title="Download Resume"
