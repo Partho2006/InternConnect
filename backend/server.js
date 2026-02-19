@@ -10,9 +10,7 @@ const app = express();
 
 // CORS - Allow credentials and specific origin
 app.use(cors({
-  origin: [
-    process.env.FRONTEND_URL
-  ],
+  origin: process.env.FRONTEND_URL,
   credentials: true
 }));
 
