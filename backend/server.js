@@ -11,8 +11,7 @@ const app = express();
 // CORS - Allow credentials and specific origin
 app.use(cors({
   origin: [
-    "http://localhost:5173",
-    "https://internconnect-backend-90xc.onrender.com/"
+    process.env.FRONTEND_URL
   ],
   credentials: true
 }));
